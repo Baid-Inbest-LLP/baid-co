@@ -1,0 +1,98 @@
+@use '@/styles/mixins.scss' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--bc-paper);
+  border-bottom: 1px solid var(--bc-line);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.elevated {
+  box-shadow: 0 8px 24px -20px rgba(12, 24, 48, 0.35);
+}
+
+.inner {
+  min-height: 5.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.desktopNav {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    align-items: center;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+  }
+
+  a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body), sans-serif;
+    font-weight: 600;
+    font-size: 1.08rem;
+    letter-spacing: 0.01em;
+    color: color-mix(in srgb, var(--bc-ink) 68%, transparent);
+    transition: color 0.2s ease;
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--bc-ink);
+    }
+  }
+}
+
+.active {
+  color: var(--bc-ink) !important;
+}
+
+.underline {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0.15rem;
+  height: 3px;
+  background: var(--bc-secondary);
+  border-radius: 999px;
+}
+
+.desktopToggle {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    align-items: center;
+  }
+}

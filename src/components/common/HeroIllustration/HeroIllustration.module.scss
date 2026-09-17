@@ -1,0 +1,73 @@
+@use '@/styles/mixins.scss' as *;
+
+.wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.frame {
+  position: relative;
+  width: min(100%, 460px);
+  aspect-ratio: 420 / 340;
+}
+
+.homeFrame {
+  width: min(100%, 460px);
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.blobA {
+  width: 55%;
+  height: 55%;
+  right: -4%;
+  top: 8%;
+  background: rgba(22, 120, 251, 0.16);
+}
+
+.blobB {
+  width: 42%;
+  height: 42%;
+  left: -2%;
+  bottom: 10%;
+  background: rgba(196, 154, 50, 0.18);
+}
+
+.blobC {
+  width: 48%;
+  height: 48%;
+  right: 8%;
+  bottom: 4%;
+  background: rgba(31, 154, 85, 0.14);
+}
+
+.blobGold {
+  width: 50%;
+  height: 50%;
+  right: 0;
+  top: 10%;
+  background: rgba(196, 154, 50, 0.22);
+}
+
+.blobHomeBlue {
+  width: 38%;
+  height: 38%;
+  left: 4%;
+  bottom: 8%;
+  background: rgba(22, 120, 251, 0.22);
+}
+
+.svg {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+}

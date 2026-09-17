@@ -1,0 +1,38 @@
+@use '@/styles/mixins.scss' as *;
+
+.section {
+  @include section;
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+
+  @include tablet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.4rem;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.more {
+  margin-top: 1.75rem;
+  display: flex;
+  justify-content: flex-start;
+
+  a {
+    font-family: var(--font-body), sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--bc-primary);
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}

@@ -1,0 +1,87 @@
+@use '@/styles/mixins.scss' as *;
+
+.section {
+  padding-block: 1rem var(--bc-section-y);
+}
+
+.inner {
+  display: grid;
+  gap: 2.75rem;
+  align-items: center;
+
+  @include tablet {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 3.5rem;
+  }
+}
+
+.copy {
+  display: grid;
+  justify-items: start;
+  gap: 1.1rem;
+
+  h2 {
+    margin: 0;
+    font-size: clamp(1.85rem, 3.4vw, 2.65rem);
+    font-weight: 600;
+    line-height: 1.18;
+    max-width: 16ch;
+  }
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bc-secondary);
+}
+
+.body {
+  margin: 0;
+  max-width: 46ch;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--bc-ink) 72%, transparent);
+}
+
+.btn {
+  width: fit-content;
+  margin-top: 0.25rem;
+  border-color: var(--bc-line) !important;
+  color: var(--bc-ink) !important;
+  font-family: var(--font-body), sans-serif !important;
+}
+
+.panel {
+  display: grid;
+  gap: 1px;
+  background: var(--bc-line);
+  border: 1px solid var(--bc-line);
+  overflow: hidden;
+  align-self: stretch;
+}
+
+.stat {
+  display: grid;
+  align-content: center;
+  gap: 0.4rem;
+  padding: 1.5rem 1.5rem;
+  background: var(--bc-surface);
+  min-height: 5.5rem;
+
+  strong {
+    font-family: var(--font-display), 'Source Serif 4', Georgia, serif;
+    font-size: 2.35rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--bc-primary);
+  }
+
+  span {
+    font-size: 0.95rem;
+    line-height: 1.35;
+    color: color-mix(in srgb, var(--bc-ink) 65%, transparent);
+  }
+}

@@ -1,0 +1,108 @@
+@use '@/styles/mixins.scss' as *;
+
+.story {
+  @include section;
+}
+
+.storyGrid {
+  display: grid;
+  gap: 3rem;
+  align-items: start;
+
+  @include tablet {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+    gap: 3.5rem;
+  }
+}
+
+.prose {
+  display: grid;
+  gap: 1.1rem;
+
+  p {
+    margin: 0;
+    line-height: 1.75;
+    color: color-mix(in srgb, var(--bc-ink) 74%, transparent);
+    max-width: 52ch;
+  }
+}
+
+.timeline {
+  display: grid;
+  gap: 0;
+  border-left: 1px solid var(--bc-line);
+  padding-left: 1.5rem;
+  margin-top: 0.35rem;
+}
+
+.milestone {
+  position: relative;
+  padding-block: 1.15rem;
+  border-bottom: 1px solid var(--bc-line);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: calc(-1.5rem - 0.28rem);
+    top: 1.5rem;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: var(--bc-secondary);
+    box-shadow: 0 0 0 4px var(--bc-paper);
+  }
+
+  span {
+    display: block;
+    font-family: var(--font-display), 'Source Serif 4', Georgia, serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--bc-primary);
+    margin-bottom: 0.3rem;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.5;
+    color: color-mix(in srgb, var(--bc-ink) 72%, transparent);
+  }
+}
+
+.values {
+  padding-block: 1rem var(--bc-section-y);
+}
+
+.valueGrid {
+  display: grid;
+  gap: 1.75rem;
+
+  @include tablet {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: start;
+  }
+}
+
+.value {
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+  padding-top: 1.25rem;
+  border-top: 2px solid var(--bc-primary);
+
+  h3 {
+    margin: 0;
+    font-size: 1.45rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.65;
+    color: color-mix(in srgb, var(--bc-ink) 70%, transparent);
+  }
+}

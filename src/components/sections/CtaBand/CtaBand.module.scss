@@ -1,0 +1,51 @@
+@use '@/styles/mixins.scss' as *;
+
+.section {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(135deg, #12264f 0%, #0c1830 55%, #1a3568 100%);
+}
+
+.band {
+  display: grid;
+  gap: 1.75rem;
+  align-items: center;
+  padding-block: 2.75rem;
+  color: #f4f6fb;
+
+  @include tablet {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2.5rem;
+    padding-block: 3.25rem;
+  }
+
+  h2 {
+    margin: 0 0 0.6rem;
+    font-size: clamp(1.65rem, 2.8vw, 2.25rem);
+    font-weight: 600;
+    max-width: 18ch;
+    line-height: 1.2;
+  }
+
+  p {
+    margin: 0;
+    color: rgba(244, 246, 251, 0.72);
+    max-width: 38ch;
+    line-height: 1.6;
+  }
+}
+
+.btn {
+  justify-self: start;
+  flex-shrink: 0;
+  background: var(--bc-secondary) !important;
+  border: none !important;
+  color: #0c1830 !important;
+  font-family: var(--font-body), sans-serif !important;
+  font-weight: 600 !important;
+
+  @include tablet {
+    justify-self: end;
+  }
+}

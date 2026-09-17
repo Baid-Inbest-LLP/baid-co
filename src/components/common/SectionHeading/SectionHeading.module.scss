@@ -1,0 +1,42 @@
+.heading {
+  display: grid;
+  gap: 0.85rem;
+  margin-bottom: 2.75rem;
+  max-width: 38rem;
+
+  h2 {
+    margin: 0;
+    font-size: clamp(1.85rem, 3.4vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1.18;
+    color: var(--bc-ink);
+  }
+}
+
+.center {
+  margin-inline: auto;
+  text-align: center;
+  justify-items: center;
+
+  .description {
+    margin-inline: auto;
+  }
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-body), 'Source Sans 3', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bc-secondary);
+}
+
+.description {
+  margin: 0;
+  max-width: 42rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--bc-ink) 72%, transparent);
+}

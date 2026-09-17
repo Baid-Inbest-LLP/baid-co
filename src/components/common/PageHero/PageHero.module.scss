@@ -1,0 +1,67 @@
+@use '@/styles/mixins.scss' as *;
+
+.hero {
+  padding-block: clamp(3.5rem, 7vh, 5rem) 3rem;
+  border-bottom: 1px solid var(--bc-line);
+  background:
+    radial-gradient(ellipse 55% 70% at 100% 0%, rgba(var(--bc-primary-rgb), 0.1), transparent),
+    var(--bc-paper);
+  overflow: hidden;
+}
+
+.inner {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+
+  @include tablet {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem 3.25rem;
+  }
+}
+
+.copy {
+  display: grid;
+  justify-items: start;
+  align-content: center;
+  gap: 0;
+  min-width: 0;
+  max-width: 34rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bc-secondary);
+}
+
+.copy h1 {
+  margin: 0;
+  font-size: clamp(2.15rem, 4.2vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.12;
+  max-width: 16ch;
+}
+
+.description {
+  margin: 1.1rem 0 0;
+  max-width: 42ch;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--bc-ink) 70%, transparent);
+}
+
+.visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+
+  @include tablet {
+    justify-content: flex-end;
+  }
+}

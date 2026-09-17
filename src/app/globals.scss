@@ -1,0 +1,92 @@
+@use '@/styles/typography.scss';
+
+:root {
+  --bc-primary: #1e3a8a;
+  --bc-secondary: #c49a32;
+  --bc-primary-rgb: 30, 58, 138;
+  --bc-secondary-rgb: 196, 154, 50;
+  --bc-ink: #0c1830;
+  --bc-mist: #e8eef8;
+  --bc-paper: #f4f6fb;
+  --bc-surface: #ffffff;
+  --bc-line: rgba(12, 24, 48, 0.1);
+  --bc-section-y: clamp(3.5rem, 6vw, 5.5rem);
+  --bc-gutter: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+:root[data-mantine-color-scheme='dark'] {
+  --bc-ink: #e8eef8;
+  --bc-mist: #152238;
+  --bc-paper: #0a1220;
+  --bc-surface: #111b2e;
+  --bc-line: rgba(232, 238, 248, 0.12);
+  --bc-primary: #7a95d9;
+  --bc-secondary: #d0ad4a;
+  --bc-primary-rgb: 122, 149, 217;
+  --bc-secondary-rgb: 208, 173, 74;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body), 'Source Sans 3', system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  letter-spacing: 0.005em;
+  background:
+    radial-gradient(ellipse 80% 50% at 100% -10%, rgba(var(--bc-primary-rgb), 0.14), transparent),
+    radial-gradient(ellipse 60% 40% at -5% 30%, rgba(var(--bc-secondary-rgb), 0.1), transparent),
+    var(--bc-paper);
+  color: var(--bc-ink);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+main {
+  overflow: clip;
+  min-height: 60vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), 'Source Serif 4', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background-color: rgba(var(--bc-primary-rgb), 0.28);
+}

@@ -1,0 +1,30 @@
+.section {
+  padding-block: 2.5rem var(--bc-section-y);
+}
+
+.layout {
+  display: grid;
+  gap: 2rem;
+  max-width: 56rem;
+}
+
+.listWrap {
+  width: 100%;
+}
+
+.note {
+  p {
+    margin: 0;
+    line-height: 1.65;
+    color: color-mix(in srgb, var(--bc-ink) 72%, transparent);
+  }
+
+  a {
+    font-weight: 600;
+    color: var(--bc-primary);
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

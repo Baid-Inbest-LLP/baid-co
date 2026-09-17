@@ -1,0 +1,124 @@
+@use '@/styles/mixins.scss' as *;
+
+.hero {
+  position: relative;
+  min-height: clamp(36rem, 88vh, 52rem);
+  padding-block: clamp(6rem, 12vh, 8rem) clamp(3.5rem, 7vh, 5rem);
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 55% 70% at 100% 0%, rgba(196, 154, 50, 0.22), transparent),
+    radial-gradient(ellipse 45% 50% at 8% 90%, rgba(22, 120, 251, 0.16), transparent),
+    linear-gradient(135deg, #08131f 0%, #12264f 48%, #1a3568 100%);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+  color: #f4f6fb;
+
+  @include tablet {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem 3.25rem;
+  }
+}
+
+.copy {
+  display: grid;
+  justify-items: start;
+  align-content: center;
+  gap: 0;
+  min-width: 0;
+  max-width: 34rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c49a32;
+}
+
+.brand {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display), 'Source Serif 4', Georgia, serif;
+  font-size: clamp(2.4rem, 4.8vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #f4f6fb;
+}
+
+.copy h1 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-family: var(--font-body), 'Source Sans 3', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  color: rgba(244, 246, 251, 0.92);
+  max-width: 20ch;
+}
+
+.description {
+  margin: 1.1rem 0 0;
+  max-width: 42ch;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: rgba(244, 246, 251, 0.68);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.35rem;
+}
+
+.primary {
+  background: var(--bc-secondary) !important;
+  border: none !important;
+  color: #0c1830 !important;
+  font-family: var(--font-body), sans-serif !important;
+  font-weight: 600 !important;
+
+  &:hover {
+    background: color-mix(in srgb, var(--bc-secondary) 88%, #fff) !important;
+  }
+}
+
+.secondary {
+  background: transparent !important;
+  border: 1px solid rgba(244, 246, 251, 0.35) !important;
+  color: #f4f6fb !important;
+  font-family: var(--font-body), sans-serif !important;
+
+  &:hover {
+    background: rgba(244, 246, 251, 0.08) !important;
+  }
+}
+
+.visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+
+  @include tablet {
+    justify-content: flex-end;
+  }
+}

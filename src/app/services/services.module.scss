@@ -1,0 +1,20 @@
+@use '@/styles/mixins.scss' as *;
+
+.list {
+  padding-block: 3rem var(--bc-section-y);
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+
+  @include tablet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.4rem;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}

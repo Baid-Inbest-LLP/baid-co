@@ -1,0 +1,62 @@
+@use '@/styles/mixins.scss' as *;
+
+.section {
+  padding-block: 3.5rem var(--bc-section-y);
+}
+
+.grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+
+  @include tablet {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+    gap: 3.5rem;
+  }
+}
+
+.info {
+  display: grid;
+  align-content: start;
+  gap: 1.75rem;
+}
+
+.hours {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--bc-ink) 65%, transparent);
+}
+
+.addressList {
+  display: grid;
+  gap: 1.35rem;
+
+  a,
+  p {
+    margin: 0;
+    line-height: 1.55;
+    color: var(--bc-ink);
+  }
+
+  a:hover {
+    color: var(--bc-primary);
+  }
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bc-secondary);
+}
+
+.formWrap {
+  padding: 1.75rem;
+  background: var(--bc-surface);
+  border: 1px solid var(--bc-line);
+}

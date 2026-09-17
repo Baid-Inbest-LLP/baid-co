@@ -1,0 +1,45 @@
+@use '@/styles/mixins.scss' as *;
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+  max-width: 100%;
+  padding: 0.3rem 0.45rem;
+  border-radius: 0.35rem;
+  background: transparent;
+  transition:
+    opacity 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    opacity: 0.92;
+  }
+}
+
+.image {
+  display: block;
+  height: 2.85rem;
+  width: auto;
+  max-width: min(220px, 58vw);
+  object-fit: contain;
+  object-position: left center;
+
+  @include tablet {
+    height: 3.15rem;
+    max-width: 260px;
+  }
+}
+
+.compact .image {
+  height: 2.4rem;
+  max-width: 180px;
+}
+
+:global([data-mantine-color-scheme='dark']) {
+  .logo {
+    background: #ffffff;
+  }
+}

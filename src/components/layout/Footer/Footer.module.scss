@@ -1,0 +1,179 @@
+@use '@/styles/mixins.scss' as *;
+
+.footer {
+  margin-top: 0;
+  border-top: 1px solid var(--bc-line);
+  background:
+    linear-gradient(180deg, transparent, rgba(var(--bc-primary-rgb), 0.06)),
+    var(--bc-surface);
+}
+
+.inner {
+  padding-block: 3.5rem 2.25rem;
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+
+  @include tablet {
+    grid-template-columns: minmax(0, 1.35fr) repeat(2, minmax(0, 0.7fr)) minmax(0, 1.45fr);
+    column-gap: 2rem;
+    row-gap: 2.5rem;
+  }
+
+  @include desktop {
+    grid-template-columns: minmax(0, 1.45fr) repeat(2, minmax(0, 0.7fr)) minmax(0, 1.5fr);
+    column-gap: 2.5rem;
+  }
+}
+
+.brand {
+  display: grid;
+  justify-items: start;
+  align-content: start;
+  gap: 1.25rem;
+}
+
+.socialIcons {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.socialBtn {
+  color: var(--bc-ink) !important;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease !important;
+
+  &:hover {
+    color: var(--bc-primary) !important;
+    background: rgba(var(--bc-primary-rgb), 0.12) !important;
+  }
+}
+
+:global([data-mantine-color-scheme='dark']) {
+  .socialBtn {
+    color: var(--bc-ink) !important;
+
+    &:hover {
+      color: var(--bc-secondary) !important;
+      background: rgba(var(--bc-secondary-rgb), 0.16) !important;
+    }
+  }
+}
+
+.links,
+.contact {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+
+  h3 {
+    margin: 0 0 1rem;
+    font-size: 0.92rem;
+    font-family: var(--font-body), sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bc-secondary);
+  }
+}
+
+.links {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  a {
+    color: color-mix(in srgb, var(--bc-ink) 78%, transparent);
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--bc-primary);
+    }
+  }
+}
+
+.contact {
+  min-width: 0;
+}
+
+.addresses {
+  display: grid;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.addressBlock {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  font-style: normal;
+  min-width: 0;
+
+  p {
+    margin: 0;
+    line-height: 1.55;
+    color: color-mix(in srgb, var(--bc-ink) 72%, transparent);
+    font-size: 0.95rem;
+    max-width: 40ch;
+  }
+}
+
+.addressLabel {
+  display: block;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  color: var(--bc-ink);
+}
+
+.bottomBar {
+  border-top: 1px solid var(--bc-line);
+  width: 100%;
+}
+
+.bottom {
+  display: grid;
+  gap: 0.65rem;
+  padding-block: 1.15rem 1.75rem;
+  color: color-mix(in srgb, var(--bc-ink) 65%, transparent);
+  font-size: 0.9rem;
+
+  @include tablet {
+    grid-template-columns: minmax(0, 1.35fr) repeat(2, minmax(0, 0.7fr)) minmax(0, 1.45fr);
+    column-gap: 2rem;
+    align-items: center;
+  }
+
+  @include desktop {
+    grid-template-columns: minmax(0, 1.45fr) repeat(2, minmax(0, 0.7fr)) minmax(0, 1.5fr);
+    column-gap: 2.5rem;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.copyright {
+  grid-column: 1;
+}
+
+.credit {
+  @include tablet {
+    grid-column: 4;
+  }
+
+  strong {
+    font-weight: 700;
+    color: var(--bc-ink);
+    letter-spacing: 0.04em;
+  }
+}

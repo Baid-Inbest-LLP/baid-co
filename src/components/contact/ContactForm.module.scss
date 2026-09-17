@@ -1,0 +1,40 @@
+.form {
+  display: grid;
+  gap: 1.1rem;
+  align-items: start;
+}
+
+.submit {
+  margin-top: 0.35rem;
+  width: fit-content;
+  background: var(--bc-primary) !important;
+  border: none !important;
+  font-family: var(--font-body), sans-serif !important;
+  font-weight: 600 !important;
+}
+
+.success {
+  display: grid;
+  justify-items: start;
+  gap: 0.7rem;
+  padding: 0.25rem 0;
+
+  h3 {
+    margin: 0;
+    font-size: 1.65rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    color: color-mix(in srgb, var(--bc-ink) 72%, transparent);
+  }
+}
+
+.reset {
+  width: fit-content;
+  margin-top: 0.5rem;
+  border-color: var(--bc-line) !important;
+  color: var(--bc-ink) !important;
+  font-family: var(--font-body), sans-serif !important;
+}
