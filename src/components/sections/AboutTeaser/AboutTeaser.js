@@ -5,7 +5,6 @@ import Link from 'next/link';
 
 import Container from '@/components/common/Container/Container';
 import Reveal from '@/components/motion/Reveal';
-import { firm } from '@/constants/site';
 
 import classes from './AboutTeaser.module.scss';
 
@@ -16,11 +15,6 @@ export default function AboutTeaser() {
         <Reveal className={classes.copy}>
           <p className={classes.eyebrow}>The firm</p>
           <h2>Decades of counsel. A practice built on trust.</h2>
-          <p className={classes.body}>
-            Since {firm.founded}, {firm.name} has stood beside founders, family businesses, and
-            growing enterprises—bringing calm expertise to every filing, audit, and strategic
-            conversation.
-          </p>
           <Button component={Link} href="/about" variant="default" className={classes.btn}>
             Our story
           </Button>

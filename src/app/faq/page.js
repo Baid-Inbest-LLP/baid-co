@@ -20,7 +20,6 @@ export default function FaqPage() {
       <PageHero
         eyebrow="Resources"
         title="Questions we hear most often."
-        description="Clear answers about our services, process, and how engagements typically begin."
         variant="faq"
       />
 

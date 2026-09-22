@@ -9,7 +9,7 @@ import classes from './services.module.scss';
 
 export const metadata = {
   title: 'Services',
-  description: `Explore audit, tax, accounting, advisory, and compliance services from ${firm.name}.`,
+  description: `Explore income tax, GST, audit, accounting, compliance, litigation, advisory, and certification services from ${firm.name}.`,
 };
 
 export default function ServicesPage() {
@@ -18,7 +18,6 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="End-to-end support across the financial lifecycle."
-        description="Whether you need a clean audit, tighter GST, or a fractional CFO lens—we meet you where you are."
         variant="services"
       />
 

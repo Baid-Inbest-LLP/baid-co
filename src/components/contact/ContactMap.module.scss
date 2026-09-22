@@ -1,0 +1,56 @@
+.map {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  pointer-events: none;
+  user-select: none;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.land circle {
+  fill: color-mix(in srgb, var(--bc-ink) 32%, transparent);
+}
+
+.stem {
+  stroke: var(--bc-primary);
+  stroke-width: 2.5;
+}
+
+.dot {
+  fill: var(--bc-primary);
+  stroke: var(--bc-surface);
+  stroke-width: 2;
+}
+
+.pulse {
+  fill: var(--bc-primary);
+}
+
+.tooltip {
+  fill: var(--bc-surface);
+  stroke: var(--bc-primary);
+  stroke-width: 2;
+  filter: drop-shadow(0 6px 16px rgba(var(--bc-primary-rgb), 0.28));
+}
+
+.tooltipTitle {
+  fill: color-mix(in srgb, var(--bc-ink) 72%, transparent);
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.tooltipCity {
+  fill: var(--bc-primary);
+  font-family: var(--font-body), sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}

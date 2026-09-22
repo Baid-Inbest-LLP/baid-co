@@ -1,46 +1,69 @@
 @use '@/styles/mixins.scss' as *;
 
 .section {
-  padding-block: 3.5rem var(--bc-section-y);
+  padding-block: clamp(2.5rem, 5vw, 4rem) var(--bc-section-y);
 }
 
-.grid {
+.layout {
+  display: grid;
+  gap: 3rem;
+}
+
+.topRow {
   display: grid;
   gap: 2.5rem;
   align-items: start;
 
   @include tablet {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
-    gap: 3.5rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: 3rem;
   }
 }
 
 .info {
   display: grid;
   align-content: start;
-  gap: 1.75rem;
-}
-
-.hours {
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: color-mix(in srgb, var(--bc-ink) 65%, transparent);
-}
-
-.addressList {
-  display: grid;
   gap: 1.35rem;
+}
+
+.copy {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 34rem;
+}
+
+.heading {
+  margin: 0;
+  font-size: clamp(2.1rem, 4.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+  color: var(--bc-ink);
+}
+
+.addressList,
+.contactMeta {
+  display: grid;
+  gap: 1rem;
 
   a,
   p {
     margin: 0;
+    font-size: 0.95rem;
     line-height: 1.55;
     color: var(--bc-ink);
   }
 
   a:hover {
     color: var(--bc-primary);
+  }
+}
+
+.contactMeta {
+  @include mobile {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
   }
 }
 
@@ -55,8 +78,62 @@
   color: var(--bc-secondary);
 }
 
+.social {
+  display: grid;
+  gap: 0.45rem;
+}
+
 .formWrap {
+  position: relative;
   padding: 1.75rem;
-  background: var(--bc-surface);
-  border: 1px solid var(--bc-line);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--bc-primary) 10%, transparent) 0%,
+      color-mix(in srgb, var(--bc-surface) 72%, transparent) 45%,
+      color-mix(in srgb, var(--bc-secondary) 8%, transparent) 100%
+    );
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  border: 1px solid color-mix(in srgb, var(--bc-ink) 12%, transparent);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, white 50%, transparent),
+    0 12px 40px color-mix(in srgb, var(--bc-ink) 6%, transparent);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--bc-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--bc-line) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.35;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse 80% 70% at 100% 0%, black, transparent 70%);
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  @include tablet {
+    padding: 2rem;
+  }
+}
+
+.mapSection {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.mapWrap {
+  width: min(100%, 52rem);
+  margin-inline: auto;
+  margin-top: 0.75rem;
 }

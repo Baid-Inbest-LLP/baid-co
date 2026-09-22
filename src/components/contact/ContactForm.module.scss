@@ -2,6 +2,56 @@
   display: grid;
   gap: 1.1rem;
   align-items: start;
+
+  :global(.mantine-InputWrapper-label) {
+    color: var(--bc-ink);
+    font-family: var(--font-body), sans-serif;
+    font-weight: 600;
+  }
+}
+
+.input {
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--bc-surface) 55%, transparent) 0%,
+    color-mix(in srgb, var(--bc-mist) 35%, transparent) 100%
+  ) !important;
+  backdrop-filter: blur(14px) saturate(1.35);
+  -webkit-backdrop-filter: blur(14px) saturate(1.35);
+  border: 1px solid color-mix(in srgb, var(--bc-ink) 14%, transparent) !important;
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, white 55%, transparent),
+    0 1px 2px color-mix(in srgb, var(--bc-ink) 4%, transparent) !important;
+  color: var(--bc-ink) !important;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease !important;
+
+  &::placeholder {
+    color: color-mix(in srgb, var(--bc-ink) 42%, transparent) !important;
+  }
+
+  &:hover {
+    background: linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--bc-surface) 68%, transparent) 0%,
+      color-mix(in srgb, var(--bc-mist) 42%, transparent) 100%
+    ) !important;
+    border-color: color-mix(in srgb, var(--bc-primary) 28%, transparent) !important;
+  }
+
+  &:focus {
+    background: linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--bc-surface) 78%, transparent) 0%,
+      color-mix(in srgb, var(--bc-primary) 8%, transparent) 100%
+    ) !important;
+    border-color: color-mix(in srgb, var(--bc-primary) 45%, transparent) !important;
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, white 60%, transparent),
+      0 0 0 3px color-mix(in srgb, var(--bc-primary) 16%, transparent) !important;
+  }
 }
 
 .submit {

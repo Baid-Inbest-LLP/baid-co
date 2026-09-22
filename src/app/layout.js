@@ -27,7 +27,7 @@ export const metadata = {
     template: `%s | ${env.appName}`,
   },
   description:
-    'Baid & Co — Chartered Accountants offering audit, taxation, accounting, advisory, and corporate compliance.',
+    'Baid & Co — Chartered Accountants offering income tax, GST, audit, accounting, compliance, litigation, advisory, and certification services.',
 };
 
 export default function RootLayout({ children }) {

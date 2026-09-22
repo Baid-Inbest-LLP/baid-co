@@ -43,7 +43,7 @@ export default async function BlogDetailPage({ params }) {
 
   return (
     <>
-      <PageHero eyebrow={post.category} title={post.title} description={post.excerpt} variant="blogs" />
+      <PageHero eyebrow={post.category} title={post.title} variant="blogs" />
 
       <section className={classes.section}>
         <Container className={classes.layout}>

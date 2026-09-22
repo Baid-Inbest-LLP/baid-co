@@ -18,11 +18,10 @@ export default function ServicesPreview() {
         <SectionHeading
           eyebrow="What we do"
           title="Services shaped around how businesses actually operate."
-          description="From statutory audits to day-to-day GST, we keep your financial house in order—and ready for what’s next."
         />
 
         <Stagger className={classes.grid}>
-          {services.map((service) => (
+          {services.slice(0, 6).map((service) => (
             <StaggerItem key={service.slug}>
               <ServiceCard service={service} />
             </StaggerItem>

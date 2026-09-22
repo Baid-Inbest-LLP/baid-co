@@ -1,20 +1,13 @@
-import { ActionIcon } from '@mantine/core';
-import { IconBrandLinkedin, IconMail, IconPhone } from '@tabler/icons-react';
 import Link from 'next/link';
 
 import Container from '@/components/common/Container/Container';
 import Logo from '@/components/common/Logo/Logo';
+import SocialLinks from '@/components/common/SocialLinks/SocialLinks';
 import env from '@/constants/env';
 import { quickLinks, resourceLinks } from '@/constants/navigation';
 import { firm } from '@/constants/site';
 
 import classes from './Footer.module.scss';
-
-const socialLinks = [
-  { href: firm.linkedin, label: 'LinkedIn', icon: IconBrandLinkedin },
-  { href: `mailto:${firm.email}`, label: 'Email', icon: IconMail },
-  { href: `tel:${firm.phone.replace(/\s/g, '')}`, label: 'Call', icon: IconPhone },
-];
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -24,24 +17,7 @@ export default function Footer() {
       <Container className={classes.inner}>
         <div className={classes.brand}>
           <Logo />
-          <div className={classes.socialIcons}>
-            {socialLinks.map(({ href, label, icon: Icon }) => (
-              <ActionIcon
-                key={label}
-                component="a"
-                href={href}
-                target={href.startsWith('http') ? '_blank' : undefined}
-                rel={href.startsWith('http') ? 'noreferrer' : undefined}
-                variant="subtle"
-                size="lg"
-                aria-label={label}
-                title={label}
-                className={classes.socialBtn}
-              >
-                <Icon size={22} stroke={1.6} />
-              </ActionIcon>
-            ))}
-          </div>
+          <SocialLinks />
         </div>
 
         <div className={classes.links}>
@@ -87,7 +63,7 @@ export default function Footer() {
             © {year} {env.appName}. Chartered Accountants.
           </p>
           <p className={classes.credit}>
-            Crafted by <strong>Inbest Team</strong> 
+            Crafted by <strong>Inbest Team</strong>
           </p>
         </Container>
       </div>

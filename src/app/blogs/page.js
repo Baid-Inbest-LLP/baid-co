@@ -28,7 +28,6 @@ export default function BlogsPage() {
       <PageHero
         eyebrow="Resources"
         title="Insights for clearer financial decisions."
-        description="Practical notes on compliance, tax, audit, and advisory—written for founders and finance teams."
         variant="blogs"
       />
 

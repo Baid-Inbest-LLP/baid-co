@@ -1,6 +1,7 @@
-import ContactForm from '@/components/contact/ContactForm';
 import Container from '@/components/common/Container/Container';
-import PageHero from '@/components/common/PageHero/PageHero';
+import SocialLinks from '@/components/common/SocialLinks/SocialLinks';
+import ContactForm from '@/components/contact/ContactForm';
+import ContactMap from '@/components/contact/ContactMap';
 import Reveal from '@/components/motion/Reveal';
 import { firm } from '@/constants/site';
 
@@ -13,18 +14,13 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <>
-      <PageHero
-        eyebrow="Contact"
-        title="Let’s talk about what you need."
-        description="Share a few details and we’ll follow up to schedule a consultation."
-        variant="contact"
-      />
-
-      <section className={classes.section}>
-        <Container className={classes.grid}>
+    <section className={classes.section}>
+      <Container className={classes.layout}>
+        <div className={classes.topRow}>
           <Reveal className={classes.info}>
-            <p className={classes.hours}>{firm.hours}</p>
+            <div className={classes.copy}>
+              <h1 className={classes.heading}>Contact Us</h1>
+            </div>
 
             <div className={classes.addressList}>
               <div>
@@ -36,6 +32,13 @@ export default function ContactPage() {
                 <p>{firm.branchAddress}</p>
               </div>
               <div>
+                <span className={classes.label}>Working Hours</span>
+                <p>{firm.hours}</p>
+              </div>
+            </div>
+
+            <div className={classes.contactMeta}>
+              <div>
                 <span className={classes.label}>Email</span>
                 <a href={`mailto:${firm.email}`}>{firm.email}</a>
               </div>
@@ -44,13 +47,25 @@ export default function ContactPage() {
                 <a href={`tel:${firm.phone.replace(/\s/g, '')}`}>{firm.phone}</a>
               </div>
             </div>
+
+            <div className={classes.social}>
+              <span className={classes.label}>Connect</span>
+              <SocialLinks />
+            </div>
           </Reveal>
 
           <Reveal delay={0.1} className={classes.formWrap}>
             <ContactForm />
           </Reveal>
-        </Container>
-      </section>
-    </>
+        </div>
+
+        <Reveal delay={0.15} className={classes.mapSection}>
+          <h2 className={classes.heading}>Our Presence</h2>
+          <div className={classes.mapWrap}>
+            <ContactMap />
+          </div>
+        </Reveal>
+      </Container>
+    </section>
   );
 }

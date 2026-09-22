@@ -27,10 +27,6 @@ export default function HeroSection() {
           <p className={classes.eyebrow}>Chartered Accountants · Since {firm.founded}</p>
           <p className={classes.brand}>{firm.name}</p>
           <h1>{firm.tagline}</h1>
-          <p className={classes.description}>
-            Trusted counsel for audit, tax, compliance, and growth—helping businesses and families
-            move with clarity.
-          </p>
           <div className={classes.actions}>
             <Button component={Link} href="/contact" size="md" className={classes.primary}>
               Book a consultation

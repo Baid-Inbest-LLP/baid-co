@@ -19,7 +19,6 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About the firm"
         title={`${firm.name} is built on precision, partnership, and plain-spoken advice.`}
-        description={firm.description}
         variant="about"
       />
 

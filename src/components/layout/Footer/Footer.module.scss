@@ -39,29 +39,6 @@
   gap: 0.25rem;
 }
 
-.socialBtn {
-  color: var(--bc-ink) !important;
-  transition:
-    color 0.2s ease,
-    background-color 0.2s ease !important;
-
-  &:hover {
-    color: var(--bc-primary) !important;
-    background: rgba(var(--bc-primary-rgb), 0.12) !important;
-  }
-}
-
-:global([data-mantine-color-scheme='dark']) {
-  .socialBtn {
-    color: var(--bc-ink) !important;
-
-    &:hover {
-      color: var(--bc-secondary) !important;
-      background: rgba(var(--bc-secondary-rgb), 0.16) !important;
-    }
-  }
-}
-
 .links,
 .contact {
   display: grid;

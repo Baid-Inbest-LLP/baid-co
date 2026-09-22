@@ -15,7 +15,6 @@ export default function CtaBand() {
         <Reveal className={classes.band}>
           <div>
             <h2>Ready for a clearer financial picture?</h2>
-            <p>Tell us where you are—we’ll map the next right step together.</p>
           </div>
           <Button component={Link} href="/contact" size="md" className={classes.btn}>
             Get in touch
