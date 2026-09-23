@@ -1,9 +1,83 @@
 @use '@/styles/mixins.scss' as *;
+@use '@/styles/variables.scss' as *;
 
+// Fluid scale: 325px → 1920px. Wave geometry uses the same custom props.
 .wrap {
+  --pw-circle: 3.75rem;
+  --pw-icon: 1.85rem;
+  --pw-number: 1.35rem;
+  --pw-title: 1.15rem;
+  --pw-body: 0.9rem;
+  --pw-gap: 0.55rem;
+  --pw-drop: 4.25rem;
+  --pw-band: 6.5rem;
+  --pw-stroke: 18px;
+  --pw-copy-max: 100%;
+  --pw-col-gap: 0.35rem;
+  --pw-rail: 6px;
+
   position: relative;
   width: 100%;
-  margin-top: 0.25rem;
+  margin-top: 0.15rem;
+}
+
+@media (min-width: $breakpoint-mobile-lg) {
+  .wrap {
+    --pw-circle: 4.25rem;
+    --pw-icon: 2.15rem;
+    --pw-number: 1.4rem;
+    --pw-title: 1.25rem;
+    --pw-body: 0.95rem;
+    --pw-rail: 7px;
+  }
+}
+
+// Horizontal wave layout from tablet up
+@include tablet {
+  .wrap {
+    --pw-circle: clamp(3.75rem, 5.2vw, 5.25rem);
+    --pw-icon: clamp(1.85rem, 2.8vw, 2.85rem);
+    --pw-number: clamp(1.25rem, 1.6vw, 1.55rem);
+    --pw-title: clamp(1rem, 1.35vw, 1.25rem);
+    --pw-body: clamp(0.8rem, 1.05vw, 0.92rem);
+    --pw-gap: clamp(0.45rem, 0.7vw, 0.65rem);
+    --pw-drop: clamp(3.75rem, 5vw, 4.75rem);
+    --pw-band: clamp(5.75rem, 8.5vw, 7.25rem);
+    --pw-stroke: clamp(16px, 2vw, 24px);
+    --pw-copy-max: min(100%, 11.5rem);
+    --pw-col-gap: clamp(0.35rem, 0.8vw, 0.65rem);
+  }
+}
+
+@include desktop {
+  .wrap {
+    --pw-circle: clamp(5rem, 4.2vw, 6.25rem);
+    --pw-icon: clamp(2.5rem, 2.6vw, 3.5rem);
+    --pw-number: clamp(1.45rem, 1.2vw, 1.65rem);
+    --pw-title: clamp(1.2rem, 1.15vw, 1.5rem);
+    --pw-body: clamp(0.9rem, 0.85vw, 1rem);
+    --pw-gap: clamp(0.55rem, 0.6vw, 0.75rem);
+    --pw-drop: clamp(4.5rem, 4vw, 5.5rem);
+    --pw-band: clamp(7rem, 6.5vw, 8.25rem);
+    --pw-stroke: clamp(22px, 1.8vw, 30px);
+    --pw-copy-max: min(100%, 14rem);
+    --pw-col-gap: clamp(0.5rem, 0.7vw, 0.85rem);
+  }
+}
+
+@media (min-width: $breakpoint-wide) {
+  .wrap {
+    --pw-circle: 6.25rem;
+    --pw-icon: 3.5rem;
+    --pw-number: 1.65rem;
+    --pw-title: 1.5rem;
+    --pw-body: 1rem;
+    --pw-gap: 0.75rem;
+    --pw-drop: 5.5rem;
+    --pw-band: 8.25rem;
+    --pw-stroke: 30px;
+    --pw-copy-max: 14rem;
+  }
 }
 
 .wave {
@@ -13,13 +87,19 @@
     display: block;
     position: absolute;
     left: calc(100% / var(--step-count) / 2);
-    right: calc(100% / var(--step-count) / 2);
-    top: 3.15rem;
-    width: auto;
-    height: 10.75rem;
+    width: calc(100% * (var(--step-count) - 1) / var(--step-count));
+    top: calc(
+      var(--pw-band) + var(--pw-circle) / 2 - var(--pw-drop) * 30 / 120
+    );
+    height: calc(var(--pw-drop) * 180 / 120);
     pointer-events: none;
     z-index: 0;
+    overflow: visible;
   }
+}
+
+.ribbon {
+  stroke-width: var(--pw-stroke);
 }
 
 .track {
@@ -33,29 +113,36 @@
 
   @include tablet {
     grid-template-columns: repeat(var(--step-count, 4), minmax(0, 1fr));
-    gap: 0.5rem;
+    gap: var(--pw-col-gap);
     align-items: start;
-    min-height: 24rem;
+    min-height: calc(
+      var(--pw-band) + var(--pw-circle) + var(--pw-drop) + var(--pw-band)
+    );
   }
 }
 
 .step {
   position: relative;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto minmax(0, 1fr);
   grid-template-rows: auto auto;
-  column-gap: 1rem;
-  row-gap: 0.35rem;
+  column-gap: 0.85rem;
+  row-gap: 0.3rem;
   align-items: center;
-  padding-bottom: 1.75rem;
+  padding-bottom: 1.5rem;
+
+  @media (min-width: $breakpoint-mobile-lg) {
+    column-gap: 1rem;
+    padding-bottom: 1.65rem;
+  }
 
   @include tablet {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    justify-items: center;
-    text-align: center;
-    gap: 0.5rem;
+    display: block;
+    min-height: calc(
+      var(--pw-band) + var(--pw-circle) + var(--pw-drop) + var(--pw-band)
+    );
     padding-bottom: 0;
+    text-align: center;
   }
 
   &:last-child {
@@ -67,24 +154,12 @@
   }
 }
 
-.high {
-  @include tablet {
-    padding-top: 0;
-  }
-}
-
-.low {
-  @include tablet {
-    padding-top: 5.35rem;
-  }
-}
-
 .rail {
   position: absolute;
-  left: calc(1.875rem - 4px);
-  top: 4.6rem;
+  left: calc(var(--pw-circle) / 2 - var(--pw-rail) / 2);
+  top: calc(var(--pw-number) + 0.35rem + var(--pw-circle));
   bottom: 0;
-  width: 8px;
+  width: var(--pw-rail);
   border-radius: 999px;
   background: linear-gradient(
     180deg,
@@ -103,15 +178,17 @@
   grid-row: 1;
   justify-self: center;
   font-family: var(--font-body), 'Source Sans 3', sans-serif;
-  font-size: 1.55rem;
+  font-size: var(--pw-number);
   font-weight: 700;
   line-height: 1;
-  color: var(--step-color);
+  color: var(--bc-ink);
 
   @include tablet {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     grid-column: auto;
     grid-row: auto;
-    font-size: 1.65rem;
   }
 }
 
@@ -121,59 +198,103 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3.75rem;
-  height: 3.75rem;
+  width: var(--pw-circle);
+  height: var(--pw-circle);
   border-radius: 50%;
-  background: #fff;
-  border: 4px solid var(--step-color);
-  color: var(--step-color);
-  box-shadow: 0 10px 22px -14px rgba(12, 24, 48, 0.5);
+  background: var(--step-color);
+  border: none;
+  color: #fff;
+  box-shadow: 0 12px 28px -14px color-mix(in srgb, var(--step-color) 70%, #0c1830);
   z-index: 1;
 
   @include tablet {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     grid-column: auto;
     grid-row: auto;
-    width: 4.65rem;
-    height: 4.65rem;
-    border-width: 5px;
   }
+}
+
+.icon {
+  width: var(--pw-icon) !important;
+  height: var(--pw-icon) !important;
+  flex-shrink: 0;
 }
 
 .copy {
   grid-column: 2;
   grid-row: 1 / span 2;
   display: grid;
-  gap: 0.35rem;
+  gap: 0.3rem;
   align-content: center;
   text-align: left;
+  min-width: 0;
 
   @include tablet {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     grid-column: auto;
     grid-row: auto;
-    max-width: 13rem;
-    margin-top: 0.15rem;
+    width: 100%;
+    max-width: var(--pw-copy-max);
     text-align: center;
+    gap: 0.35rem;
   }
 
   h3 {
     margin: 0;
     font-family: var(--font-body), 'Source Sans 3', sans-serif;
-    font-size: 1rem;
+    font-size: var(--pw-title);
     font-weight: 700;
     line-height: 1.3;
     color: var(--bc-ink);
+    overflow-wrap: anywhere;
+    hyphens: auto;
   }
 
   p {
     margin: 0;
-    font-size: 0.82rem;
-    line-height: 1.45;
+    font-size: var(--pw-body);
+    line-height: 1.5;
     color: color-mix(in srgb, var(--bc-ink) 58%, transparent);
+    overflow-wrap: break-word;
   }
 }
 
-:global([data-mantine-color-scheme='dark']) {
-  .circle {
-    background: var(--bc-surface);
+// Odd steps (1, 3…): copy above circle, number below
+.odd {
+  @include tablet {
+    .copy {
+      top: auto;
+      bottom: calc(100% - var(--pw-band) + var(--pw-gap));
+    }
+
+    .circle {
+      top: var(--pw-band);
+    }
+
+    .number {
+      top: calc(var(--pw-band) + var(--pw-circle) + var(--pw-gap));
+    }
+  }
+}
+
+// Even steps (2, 4…): number above circle, copy below
+.even {
+  @include tablet {
+    .number {
+      top: calc(var(--pw-band) + var(--pw-drop) - var(--pw-number) - var(--pw-gap));
+    }
+
+    .circle {
+      top: calc(var(--pw-band) + var(--pw-drop));
+    }
+
+    .copy {
+      top: calc(var(--pw-band) + var(--pw-drop) + var(--pw-circle) + var(--pw-gap));
+      bottom: auto;
+    }
   }
 }

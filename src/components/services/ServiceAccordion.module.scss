@@ -1,0 +1,163 @@
+.root {
+  --acc-card: var(--bc-surface);
+  --acc-border: var(--bc-line);
+  --acc-label: var(--bc-primary);
+  --acc-icon-bg: color-mix(in srgb, var(--bc-ink) 9%, transparent);
+  --acc-icon-fg: color-mix(in srgb, var(--bc-ink) 70%, transparent);
+  --acc-open-bg: var(--bc-primary);
+  --acc-open-fg: var(--bc-surface);
+  --acc-open-icon-bg: color-mix(in srgb, var(--bc-surface) 22%, transparent);
+  --acc-open-icon-fg: var(--bc-surface);
+  --acc-panel: color-mix(in srgb, var(--bc-mist) 65%, var(--bc-surface));
+  --acc-detail: color-mix(in srgb, var(--bc-ink) 72%, transparent);
+  --acc-shadow: 0 8px 22px -18px color-mix(in srgb, var(--bc-ink) 40%, transparent);
+  --acc-open-shadow: 0 14px 28px -20px rgba(var(--bc-primary-rgb), 0.45);
+
+  display: grid;
+  gap: 0.85rem;
+  max-width: 58rem;
+  margin-inline: auto;
+}
+
+.item {
+  overflow: hidden;
+  border: 1px solid var(--acc-border);
+  border-radius: 0.65rem;
+  background: var(--acc-card);
+  box-shadow: var(--acc-shadow);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.trigger {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin: 0;
+  padding: 1.05rem 1.15rem;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  transition: background-color 0.25s ease;
+
+  &:focus-visible {
+    outline: 2px solid var(--bc-secondary);
+    outline-offset: -2px;
+  }
+}
+
+.label {
+  font-family: var(--font-body), 'Source Sans 3', sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--acc-label);
+  transition: color 0.25s ease;
+}
+
+.icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--acc-icon-bg);
+  color: var(--acc-icon-fg);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.iconFace {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.plus {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.close {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.7);
+}
+
+.open {
+  border-color: color-mix(in srgb, var(--bc-primary) 40%, var(--bc-line));
+  box-shadow: var(--acc-open-shadow);
+
+  .trigger {
+    background: var(--acc-open-bg);
+  }
+
+  .label {
+    color: var(--acc-open-fg);
+  }
+
+  .icon {
+    background: var(--acc-open-icon-bg);
+    color: var(--acc-open-icon-fg);
+  }
+
+  .plus {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.7);
+  }
+
+  .close {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.panel {
+  overflow: hidden;
+  background: var(--acc-panel);
+  border-top: 1px solid var(--acc-border);
+}
+
+.detail {
+  margin: 0;
+  padding: 1.05rem 1.15rem 1.2rem;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--acc-detail);
+}
+
+:global([data-mantine-color-scheme='dark']) {
+  .root {
+    --acc-card: var(--bc-surface);
+    --acc-border: var(--bc-line);
+    --acc-label: var(--bc-ink);
+    --acc-icon-bg: color-mix(in srgb, var(--bc-ink) 14%, transparent);
+    --acc-icon-fg: color-mix(in srgb, var(--bc-ink) 82%, transparent);
+    --acc-open-bg: color-mix(in srgb, var(--bc-primary) 32%, var(--bc-paper));
+    --acc-open-fg: var(--bc-ink);
+    --acc-open-icon-bg: color-mix(in srgb, var(--bc-ink) 16%, transparent);
+    --acc-open-icon-fg: color-mix(in srgb, var(--bc-ink) 78%, transparent);
+    --acc-panel: color-mix(in srgb, var(--bc-mist) 80%, var(--bc-surface));
+    --acc-detail: color-mix(in srgb, var(--bc-ink) 78%, transparent);
+    --acc-shadow: 0 10px 28px -22px rgba(0, 0, 0, 0.55);
+    --acc-open-shadow: 0 16px 32px -22px rgba(0, 0, 0, 0.65);
+  }
+
+  .open {
+    border-color: color-mix(in srgb, var(--bc-primary) 50%, var(--bc-line));
+  }
+}

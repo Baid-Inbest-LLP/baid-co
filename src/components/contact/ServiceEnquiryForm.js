@@ -35,7 +35,6 @@ export default function ServiceEnquiryForm({ serviceSlug, serviceTitle }) {
   if (submitted) {
     return (
       <div className={classes.success} role="status">
-        <p className={classes.successEyebrow}>Received</p>
         <h3>We’ll be in touch shortly</h3>
         <p>
           Thanks for your interest in <strong>{serviceTitle}</strong>. A team member will follow up
@@ -50,38 +49,36 @@ export default function ServiceEnquiryForm({ serviceSlug, serviceTitle }) {
 
   return (
     <form className={classes.form} onSubmit={handleSubmit} noValidate>
-      <div className={classes.serviceChip}>
-        <span>Regarding</span>
-        <strong>{serviceTitle}</strong>
-      </div>
+      <h3 className={classes.title}>Enquire about {serviceTitle}</h3>
 
-      <div className={classes.row}>
-        <TextInput
-          label="Name"
-          placeholder="Your full name"
-          withAsterisk
-          classNames={{
-            root: classes.field,
-            label: classes.label,
-            input: classes.input,
-            error: classes.error,
-          }}
-          {...form.getInputProps('name')}
-        />
-        <TextInput
-          label="Phone"
-          placeholder="+91 98765 43210"
-          withAsterisk
-          type="tel"
-          classNames={{
-            root: classes.field,
-            label: classes.label,
-            input: classes.input,
-            error: classes.error,
-          }}
-          {...form.getInputProps('phone')}
-        />
-      </div>
+      <TextInput
+        label="Name"
+        placeholder="Full name"
+        withAsterisk
+        classNames={{
+          root: classes.field,
+          label: classes.label,
+          required: classes.required,
+          input: classes.input,
+          error: classes.error,
+        }}
+        {...form.getInputProps('name')}
+      />
+
+      <TextInput
+        label="Mobile"
+        placeholder="10-digit mobile"
+        withAsterisk
+        type="tel"
+        classNames={{
+          root: classes.field,
+          label: classes.label,
+          required: classes.required,
+          input: classes.input,
+          error: classes.error,
+        }}
+        {...form.getInputProps('phone')}
+      />
 
       <TextInput
         label="Email"
@@ -90,29 +87,49 @@ export default function ServiceEnquiryForm({ serviceSlug, serviceTitle }) {
         classNames={{
           root: classes.field,
           label: classes.label,
+          required: classes.required,
           input: classes.input,
           error: classes.error,
         }}
         {...form.getInputProps('email')}
       />
 
+      <TextInput
+        label="Service"
+        value={serviceTitle}
+        readOnly
+        withAsterisk
+        classNames={{
+          root: classes.field,
+          label: classes.label,
+          required: classes.required,
+          input: classes.input,
+          error: classes.error,
+        }}
+      />
+
       <Textarea
-        label="How can we help?"
-        placeholder="Share timelines, entity type, or what you need from this service"
+        label="Message"
+        placeholder="Tell us about your timelines and needs"
         minRows={3}
         autosize
         withAsterisk
         classNames={{
           root: classes.field,
           label: classes.label,
+          required: classes.required,
           input: classes.textarea,
           error: classes.error,
         }}
         {...form.getInputProps('message')}
       />
 
-      <Button type="submit" className={classes.submit} rightSection={<IconSend size={16} stroke={2} />}>
-        Request a conversation
+      <Button
+        type="submit"
+        className={classes.submit}
+        leftSection={<IconSend size={16} stroke={2} />}
+      >
+        Submit Enquiry
       </Button>
     </form>
   );

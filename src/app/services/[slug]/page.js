@@ -7,7 +7,10 @@ import PageHero from '@/components/common/PageHero/PageHero';
 import ServiceEnquiryForm from '@/components/contact/ServiceEnquiryForm';
 import Reveal from '@/components/motion/Reveal';
 import Stagger, { StaggerItem } from '@/components/motion/Stagger';
+import AudienceHex from '@/components/services/AudienceHex';
+import LawPaperCuts from '@/components/services/LawPaperCuts';
 import ProcessWave from '@/components/services/ProcessWave';
+import ServiceAccordion from '@/components/services/ServiceAccordion';
 import { getServiceBySlug, services } from '@/constants/site';
 
 import classes from './service.module.scss';
@@ -46,119 +49,94 @@ export default async function ServiceDetailPage({ params }) {
         variant="service"
       />
 
-      <section className={classes.overview}>
-        <Container className={classes.overviewGrid}>
-          <Reveal className={classes.prose}>
-            <p className={classes.sectionEyebrow}>Overview</p>
-            <h2>What this engagement covers</h2>
-            {service.overview.map((paragraph) => (
-              <p key={paragraph.slice(0, 48)}>{paragraph}</p>
-            ))}
-          </Reveal>
-
-          <Reveal delay={0.08} className={classes.frameworks}>
-            <p className={classes.sectionEyebrow}>Regulatory context</p>
-            <h2>Grounded in Indian law</h2>
-            <ul>
-              {service.frameworks.map((item) => (
-                <li key={item.label}>
-                  <h3>{item.label}</h3>
-                  <p>{item.detail}</p>
-                </li>
+      <section className={classes.intro}>
+        <Container className={classes.introGrid}>
+          <div className={classes.introMain}>
+            <Reveal className={classes.prose}>
+              <h2>What this engagement covers</h2>
+              {service.overview.map((paragraph) => (
+                <p key={paragraph.slice(0, 48)}>{paragraph}</p>
               ))}
-            </ul>
-            <p className={classes.disclaimer}>
-              References summarise commonly applicable statutes and frameworks for general
-              information. Advice is scoped to each client&apos;s facts and current law.
-            </p>
-          </Reveal>
-        </Container>
-      </section>
+            </Reveal>
 
-      <section className={classes.coverage}>
-        <Container className={classes.coverageGrid}>
-          <Reveal className={classes.main}>
-            <p className={classes.sectionEyebrow}>Scope</p>
-            <h2>What we cover</h2>
-            <ul className={classes.list}>
-              {service.highlights.map((item) => (
-                <li key={item}>
-                  <span className={classes.check} aria-hidden>
-                    <IconCheck size={16} stroke={2.25} />
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
+            <Reveal delay={0.06} className={classes.main}>
+              <h2>What we cover</h2>
+              <ul className={classes.list}>
+                {service.highlights.map((item) => (
+                  <li key={item}>
+                    <span className={classes.check} aria-hidden>
+                      <IconCheck size={16} stroke={2.25} />
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
 
-          <Reveal delay={0.1} className={classes.aside}>
-            <p className={classes.sectionEyebrow}>Results</p>
-            <h3>Outcomes you can expect</h3>
-            <ul>
-              {service.outcomes.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <a href="#enquire" className={classes.cta}>
-              Discuss this service
-              <IconArrowRight size={18} stroke={2} aria-hidden />
-            </a>
-          </Reveal>
+          <aside className={classes.introAside}>
+            <div className={classes.formCard}>
+              <ServiceEnquiryForm serviceSlug={service.slug} serviceTitle={service.title} />
+            </div>
+          </aside>
         </Container>
       </section>
 
       <section className={classes.process}>
         <Container>
           <Reveal className={classes.processIntro}>
-            <p className={classes.sectionEyebrow}>Approach</p>
             <h2>How we work</h2>
-            <p>A clear rhythm from scoping to delivery—so timelines and ownership stay visible.</p>
           </Reveal>
 
           <Reveal delay={0.08}>
-            <ProcessWave steps={service.process} />
+            <div style={{ padding: '48px 0' }}>
+              <ProcessWave steps={service.process} />
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      <section className={classes.lawOutcomes}>
+        <Container>
+          <Reveal className={classes.lawIntro}>
+            <h2>Grounded in Indian law</h2>
+          </Reveal>
+
+          <Reveal delay={0.08}>
+            <LawPaperCuts items={service.frameworks} />
           </Reveal>
         </Container>
       </section>
 
       <section className={classes.audience}>
         <Container>
-          <Reveal className={classes.audienceInner}>
-            <div className={classes.audienceCopy}>
-              <p className={classes.sectionEyebrow}>Fit</p>
-              <h2>Who this is for</h2>
-            </div>
-            <ul className={classes.audienceList}>
-              {service.whoFor.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+          <Reveal className={classes.audienceIntro}>
+            <h2>Who this is for</h2>
+          </Reveal>
+
+          <Reveal delay={0.08}>
+            <AudienceHex items={service.whoFor} />
           </Reveal>
         </Container>
       </section>
 
-      <section id="enquire" className={classes.enquire}>
-        <Container className={classes.enquireGrid}>
-          <Reveal className={classes.enquireCopy}>
-            <p className={classes.sectionEyebrow}>Start a conversation</p>
-            <h2>Discuss {service.title}</h2>
-            <p>
-              Tell us about your timelines and context. We’ll reply with next steps—no need to leave
-              this page.
-            </p>
-          </Reveal>
+      {service.faqs?.length > 0 && (
+        <section className={classes.faq}>
+          <Container>
+            <Reveal className={classes.faqIntro}>
+              <h2>Frequently asked questions</h2>
+            </Reveal>
 
-          <Reveal delay={0.08} className={classes.enquireForm}>
-            <ServiceEnquiryForm serviceSlug={service.slug} serviceTitle={service.title} />
-          </Reveal>
-        </Container>
-      </section>
+            <Reveal delay={0.08}>
+              <ServiceAccordion items={service.faqs} idPrefix={`faq-${service.slug}`} />
+            </Reveal>
+          </Container>
+        </section>
+      )}
 
       <section className={classes.related}>
         <Container>
           <Reveal>
-            <p className={classes.sectionEyebrow}>Explore more</p>
             <h2>Related services</h2>
           </Reveal>
           <Stagger className={classes.relatedGrid}>
