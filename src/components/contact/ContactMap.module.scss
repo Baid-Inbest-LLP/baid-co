@@ -14,7 +14,13 @@
 }
 
 .land circle {
-  fill: color-mix(in srgb, var(--bc-ink) 32%, transparent);
+  fill: #5a6578;
+}
+
+:global([data-mantine-color-scheme='dark']) {
+  .land circle {
+    fill: color-mix(in srgb, var(--bc-ink) 38%, transparent);
+  }
 }
 
 .stem {

@@ -1,6 +1,7 @@
 @use '@/styles/mixins.scss' as *;
 
 .hero {
+  position: relative;
   padding-block: clamp(3.5rem, 7vh, 5rem) 3rem;
   border-bottom: 1px solid var(--bc-line);
   background:
@@ -9,7 +10,59 @@
   overflow: hidden;
 }
 
+.withBgImage {
+  min-height: clamp(20rem, 42vw, 28rem);
+  padding-block: clamp(3.5rem, 7vh, 5rem);
+  display: grid;
+  align-items: center;
+  background: var(--bc-paper);
+}
+
+.bgVisual {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+
+  @include tablet {
+    left: 38%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--bc-paper) 88%, transparent) 0%,
+      color-mix(in srgb, var(--bc-paper) 55%, transparent) 45%,
+      transparent 100%
+    );
+
+    @include tablet {
+      background: linear-gradient(
+        to right,
+        var(--bc-paper) 0%,
+        color-mix(in srgb, var(--bc-paper) 72%, transparent) 18%,
+        transparent 42%
+      );
+    }
+  }
+}
+
+.bgImage {
+  object-fit: cover;
+  object-position: right center;
+
+  @include tablet {
+    object-position: 70% center;
+  }
+}
+
 .inner {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: 2.5rem;
   align-items: center;
@@ -17,6 +70,12 @@
   @include tablet {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 2.5rem 3.25rem;
+  }
+}
+
+.withBgImage .inner {
+  @include tablet {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 

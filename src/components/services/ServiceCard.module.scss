@@ -3,7 +3,7 @@
   display: grid;
   align-content: start;
   height: 100%;
-  min-height: 13.5rem;
+  min-height: 15.5rem;
   padding: 1.85rem 1.65rem 2rem;
   border-radius: 1.35rem;
   overflow: hidden;
@@ -11,8 +11,7 @@
     transform 0.25s ease,
     box-shadow 0.25s ease;
 
-  &:hover,
-  &:focus-within {
+  &:hover {
     transform: translateY(-3px);
     box-shadow: 0 14px 28px -18px rgba(12, 24, 48, 0.28);
 
@@ -198,8 +197,7 @@
   .card {
     box-shadow: none;
 
-    &:hover,
-    &:focus-within {
+    &:hover {
       box-shadow: 0 14px 28px -16px rgba(0, 0, 0, 0.45);
     }
 
@@ -248,7 +246,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .card:hover .cta .ctaArrow,
-  .card:focus-within .cta .ctaArrow,
   .cta .ctaArrow {
     animation: none;
   }
