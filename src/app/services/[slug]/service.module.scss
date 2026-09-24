@@ -107,10 +107,17 @@
     align-items: flex-start;
     gap: 0.85rem;
     padding: 0.85rem 0.95rem;
-    background: color-mix(in srgb, var(--bc-mist) 55%, transparent);
+    background: #ffffff;
     border-left: 2px solid var(--bc-primary);
+    border-radius: 0 0.5rem 0.5rem 0;
     line-height: 1.5;
     color: color-mix(in srgb, var(--bc-ink) 84%, transparent);
+  }
+}
+
+:global([data-mantine-color-scheme='dark']) {
+  .list li {
+    background: color-mix(in srgb, var(--bc-mist) 55%, transparent);
   }
 }
 
@@ -214,14 +221,14 @@
 }
 
 .lawOutcomes {
-  --law-desk: #e4dccb;
+  --law-desk: #f5eedd;
   --law-desk-ink: #1c1a16;
   --law-fade-top: var(--bc-surface);
   --law-fade-bottom: #ffffff;
 
   position: relative;
   isolation: isolate;
-  padding-block: clamp(2.75rem, 5vw, 4.25rem);
+  padding-block: clamp(4.5rem, 9vw, 7.5rem);
   background: var(--law-desk);
   border-block: none;
   color: var(--law-desk-ink);
@@ -279,7 +286,7 @@
 
 :global([data-mantine-color-scheme='dark']) {
   .lawOutcomes {
-    --law-desk: #1a2230;
+    --law-desk: #252017;
     --law-desk-ink: #e8e4d8;
     --law-fade-top: var(--bc-surface);
     --law-fade-bottom: var(--bc-surface);
@@ -385,20 +392,26 @@
 }
 
 .relatedCard {
-  display: grid;
-  align-content: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 0.65rem;
   padding: 1.35rem 0 0;
   border-top: 2px solid var(--bc-primary);
   min-height: 100%;
-  transition: opacity 0.2s ease;
 
-  &:hover {
-    opacity: 0.8;
+  &:hover .relatedLink {
+    background: var(--bc-primary);
+    color: var(--bc-surface);
 
-    .relatedLink svg {
+    svg {
       transform: translateX(3px);
     }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--bc-secondary);
+    outline-offset: 4px;
   }
 
   h3 {
@@ -418,14 +431,28 @@
 .relatedLink {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  margin-top: 0.35rem;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding: 0.55rem 1.05rem;
+  border: 1.5px solid var(--bc-primary);
+  border-radius: 0.45rem;
+  background: transparent;
   font-family: var(--font-body), sans-serif;
   font-size: 0.88rem;
   font-weight: 600;
+  line-height: 1.2;
   color: var(--bc-primary);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 
   svg {
     transition: transform 0.2s ease;
+  }
+}
+
+:global([data-mantine-color-scheme='dark']) {
+  .relatedCard:hover .relatedLink {
+    color: var(--bc-paper);
   }
 }

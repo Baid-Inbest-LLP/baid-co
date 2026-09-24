@@ -1,108 +1,160 @@
 @use '@/styles/mixins.scss' as *;
 
-.story {
+.firm {
   @include section;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--bc-mist) 70%, var(--bc-surface)) 0%,
+    var(--bc-mist) 100%
+  );
+  border-bottom: 2px dotted color-mix(in srgb, var(--bc-primary) 55%, transparent);
 }
 
-.storyGrid {
+.firmGrid {
   display: grid;
-  gap: 3rem;
-  align-items: start;
+  gap: 2.5rem;
+  align-items: center;
 
   @include tablet {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
-    gap: 3.5rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3rem;
+  }
+
+  @include desktop {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 4rem;
   }
 }
 
-.prose {
+.firmCopy {
   display: grid;
-  gap: 1.1rem;
+  gap: 1rem;
+
+  h1 {
+    margin: 0 0 0.35rem;
+    font-size: clamp(2.15rem, 4.2vw, 3.25rem);
+    line-height: 1.12;
+    font-weight: 700;
+    color: var(--bc-ink);
+  }
 
   p {
     margin: 0;
+    max-width: 58ch;
     line-height: 1.75;
-    color: color-mix(in srgb, var(--bc-ink) 74%, transparent);
-    max-width: 52ch;
+    color: color-mix(in srgb, var(--bc-ink) 78%, transparent);
+  }
+
+  strong {
+    font-weight: 700;
+    color: var(--bc-ink);
   }
 }
 
-.timeline {
-  display: grid;
-  gap: 0;
-  border-left: 1px solid var(--bc-line);
-  padding-left: 1.5rem;
-  margin-top: 0.35rem;
+.firmVisual {
+  display: flex;
+  justify-content: center;
 }
 
-.milestone {
-  position: relative;
-  padding-block: 1.15rem;
-  border-bottom: 1px solid var(--bc-line);
-
-  &:last-child {
-    border-bottom: none;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: calc(-1.5rem - 0.28rem);
-    top: 1.5rem;
-    width: 0.55rem;
-    height: 0.55rem;
-    border-radius: 50%;
-    background: var(--bc-secondary);
-    box-shadow: 0 0 0 4px var(--bc-paper);
-  }
-
-  span {
-    display: block;
-    font-family: var(--font-display), 'Source Serif 4', Georgia, serif;
-    font-size: 1.45rem;
-    font-weight: 600;
-    color: var(--bc-primary);
-    margin-bottom: 0.3rem;
-  }
-
-  p {
-    margin: 0;
-    line-height: 1.5;
-    color: color-mix(in srgb, var(--bc-ink) 72%, transparent);
-  }
+.firmImage {
+  width: 100%;
+  max-width: 34rem;
+  height: auto;
 }
 
-.values {
-  padding-block: 1rem var(--bc-section-y);
+.vision {
+  padding-block: clamp(4.5rem, 9vw, 7.5rem) clamp(2.5rem, 5vw, 4rem);
+  background: var(--bc-surface);
 }
 
-.valueGrid {
+.mission {
+  padding-block: clamp(2.5rem, 5vw, 4rem) clamp(4.5rem, 9vw, 7.5rem);
+  background: var(--bc-surface);
+}
+
+.pillarGrid {
   display: grid;
   gap: 1.75rem;
+  align-items: center;
 
   @include tablet {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2rem;
-    align-items: start;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 3rem;
   }
 }
 
-.value {
-  display: grid;
-  align-content: start;
-  gap: 0.65rem;
-  padding-top: 1.25rem;
-  border-top: 2px solid var(--bc-primary);
+.pillarReverse {
+  @include tablet {
+    grid-template-columns: auto minmax(0, 1fr);
 
-  h3 {
-    margin: 0;
-    font-size: 1.45rem;
-    font-weight: 600;
+    .pillarIcon {
+      order: -1;
+    }
   }
 
-  p {
-    margin: 0;
+  @include desktop {
+    padding-left: clamp(0rem, 8vw, 9rem);
+  }
+}
+
+.pillarCopy {
+  h2 {
+    margin: 0 0 1.1rem;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--bc-ink);
+  }
+}
+
+.points {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: 1.25rem;
     line-height: 1.65;
-    color: color-mix(in srgb, var(--bc-ink) 70%, transparent);
+    color: color-mix(in srgb, var(--bc-ink) 78%, transparent);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0.1rem;
+      top: 0.62em;
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      background: var(--bc-secondary);
+    }
+  }
+}
+
+.pillarIcon {
+  display: flex;
+  justify-content: center;
+  order: -1;
+
+  @include tablet {
+    order: 0;
+  }
+}
+
+.pillarImage {
+  width: clamp(6.5rem, 14vw, 9.5rem);
+  height: auto;
+}
+
+:global([data-mantine-color-scheme='dark']) {
+  .firm {
+    background: linear-gradient(180deg, var(--bc-paper) 0%, var(--bc-mist) 100%);
+  }
+
+  .pillarImage {
+    padding: 0.9rem;
+    border-radius: 50%;
+    background: #e8eef8;
   }
 }

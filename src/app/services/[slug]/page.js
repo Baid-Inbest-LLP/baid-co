@@ -44,7 +44,6 @@ export default async function ServiceDetailPage({ params }) {
   return (
     <>
       <PageHero
-        eyebrow="Service"
         title={service.title}
         variant="service"
       />

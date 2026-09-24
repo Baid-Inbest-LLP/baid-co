@@ -983,6 +983,20 @@ export const values = [
   },
 ];
 
+export const vision = [
+  'Delivering quality audit, assurance and regulatory compliance services.',
+  'Providing direct tax, indirect tax and advisory support across sectors.',
+  'Upholding professional ethics, integrity and confidentiality in every engagement.',
+  'Serving clients with diligence, professionalism and timely communication.',
+];
+
+export const mission = [
+  'Provide quality professional services with a practical, business-oriented approach.',
+  'Deliver accurate and timely financial, taxation and regulatory solutions.',
+  'Build long-term professional relationships based on transparency.',
+  'Continuously update knowledge and adopt evolving regulatory and technological developments.',
+];
+
 export const milestones = [
   { year: '1989', label: 'Firm founded in Kolkata' },
   { year: '2008', label: 'Expanded into advisory & CFO support' },

@@ -1,75 +1,82 @@
+import Image from 'next/image';
+
 import Container from '@/components/common/Container/Container';
-import PageHero from '@/components/common/PageHero/PageHero';
-import SectionHeading from '@/components/common/SectionHeading/SectionHeading';
 import Reveal from '@/components/motion/Reveal';
-import Stagger, { StaggerItem } from '@/components/motion/Stagger';
 import CtaBand from '@/components/sections/CtaBand/CtaBand';
-import { firm, milestones, values } from '@/constants/site';
+import { firm, mission, vision } from '@/constants/site';
+import teamImage from '@/assets/images/about-team.png';
+import visionImage from '@/assets/images/about-vision.png';
+import missionImage from '@/assets/images/about-mission.png';
 
 import classes from './about.module.scss';
 
 export const metadata = {
   title: 'About',
-  description: `Learn about ${firm.name} — our history, values, and approach as Chartered Accountants.`,
+  description: `Learn about ${firm.name} — our history, vision, and mission as Chartered Accountants.`,
 };
 
 export default function AboutPage() {
   return (
     <>
-      <PageHero
-        eyebrow="About the firm"
-        title={`${firm.name} is built on precision, partnership, and plain-spoken advice.`}
-        variant="about"
-      />
-
-      <section className={classes.story}>
-        <Container className={classes.storyGrid}>
-          <Reveal>
-            <SectionHeading
-              eyebrow="Our story"
-              title="A practice that grew with the businesses it serves."
-            />
-            <div className={classes.prose}>
-              <p>
-                Founded in {firm.founded}, {firm.name} began as a focused audit and tax practice in
-                Kolkata. Over the years we expanded into bookkeeping, GST, corporate compliance, and
-                hands-on business advisory—always with the same belief: numbers should create
-                clarity, not confusion.
-              </p>
-              <p>
-                Today we work with startups, established companies, and family offices. Clients stay
-                because we show up prepared, explain the “why,” and treat every engagement as a
-                long-term relationship.
-              </p>
-            </div>
+      <section className={classes.firm}>
+        <Container className={classes.firmGrid}>
+          <Reveal className={classes.firmCopy}>
+            <h1>About The Firm</h1>
+            <p>
+              <strong>BAID &amp; COMPANY</strong> is a distinguished partnership firm of Chartered
+              Accountants established in the year {firm.founded}, with its Head Office situated at
+              Ballygunge Circular Road, Kolkata 700019.
+            </p>
+            <p>
+              Over the years, the firm has successfully assisted clients in navigating complex
+              regulatory frameworks, managing tax and compliance obligations, strengthening
+              financial controls, and achieving sustainable business growth.
+            </p>
           </Reveal>
 
-          <Reveal delay={0.1} className={classes.timeline}>
-            {milestones.map((item) => (
-              <article key={item.year} className={classes.milestone}>
-                <span>{item.year}</span>
-                <p>{item.label}</p>
-              </article>
-            ))}
+          <Reveal delay={0.1} className={classes.firmVisual}>
+            <Image
+              src={teamImage}
+              alt="The Baid & Company team"
+              sizes="(max-width: 768px) 90vw, 45vw"
+              className={classes.firmImage}
+              priority
+            />
           </Reveal>
         </Container>
       </section>
 
-      <section className={classes.values}>
-        <Container>
-          <SectionHeading
-            eyebrow="How we work"
-            title="Principles that guide every engagement."
-            align="center"
-          />
-          <Stagger className={classes.valueGrid}>
-            {values.map((value) => (
-              <StaggerItem key={value.title} className={classes.value}>
-                <h3>{value.title}</h3>
-                <p>{value.description}</p>
-              </StaggerItem>
-            ))}
-          </Stagger>
+      <section className={classes.vision}>
+        <Container className={classes.pillarGrid}>
+          <Reveal className={classes.pillarCopy}>
+            <h2>Our Vision</h2>
+            <ul className={classes.points}>
+              {vision.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          </Reveal>
+
+          <Reveal delay={0.1} className={classes.pillarIcon}>
+            <Image src={visionImage} alt="" sizes="160px" className={classes.pillarImage} />
+          </Reveal>
+        </Container>
+      </section>
+
+      <section className={classes.mission}>
+        <Container className={`${classes.pillarGrid} ${classes.pillarReverse}`}>
+          <Reveal className={classes.pillarCopy}>
+            <h2>Our Mission</h2>
+            <ul className={classes.points}>
+              {mission.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          </Reveal>
+
+          <Reveal delay={0.1} className={classes.pillarIcon}>
+            <Image src={missionImage} alt="" sizes="160px" className={classes.pillarImage} />
+          </Reveal>
         </Container>
       </section>
 
