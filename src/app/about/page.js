@@ -1,12 +1,17 @@
 import Image from 'next/image';
 
+import missionImage from '@/assets/images/about-mission.png';
+import teamImage from '@/assets/images/about-team.png';
+import visionImage from '@/assets/images/about-vision.png';
 import Container from '@/components/common/Container/Container';
 import Reveal from '@/components/motion/Reveal';
 import CtaBand from '@/components/sections/CtaBand/CtaBand';
+import Founder from '@/components/sections/Founder/Founder';
+import Gallery from '@/components/sections/Gallery/Gallery';
+import OurJourney from '@/components/sections/OurJourney/OurJourney';
+import Team from '@/components/sections/Team/Team';
+import Testimonials from '@/components/sections/Testimonials/Testimonials';
 import { firm, mission, vision } from '@/constants/site';
-import teamImage from '@/assets/images/about-team.png';
-import visionImage from '@/assets/images/about-vision.png';
-import missionImage from '@/assets/images/about-mission.png';
 
 import classes from './about.module.scss';
 
@@ -79,6 +84,16 @@ export default function AboutPage() {
           </Reveal>
         </Container>
       </section>
+
+      <Founder />
+
+      <Team />
+
+      <OurJourney />
+
+      <Gallery className={classes.gallery} />
+
+      <Testimonials className={classes.testimonials} />
 
       <CtaBand />
     </>

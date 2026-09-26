@@ -1,0 +1,291 @@
+@use '@/styles/mixins.scss' as *;
+
+.root {
+  width: 100%;
+  max-width: 75rem;
+  margin-inline: auto;
+}
+
+.track {
+  --road-far: 6;
+  --road-near: 34;
+  --rail: 4.25rem;
+  --stone-w: 2.1rem;
+  --asphalt: #55595d;
+  --asphalt-edge: #3b3f42;
+  --road-yellow: #f5b50a;
+
+  position: relative;
+  padding-block: 1.5rem 3rem;
+
+  @include mobile-lg {
+    --road-near: 44;
+    --rail: 5rem;
+    --stone-w: 2.2rem;
+  }
+
+  @include tablet {
+    --road-far: 10;
+    --road-near: 76;
+    --stone-w: 2.5rem;
+    padding-block: 2rem 4rem;
+  }
+
+  @include desktop {
+    --road-far: 12;
+    --road-near: 110;
+    --stone-w: 2.75rem;
+  }
+}
+
+.road {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.roadBorder {
+  fill: var(--asphalt-edge);
+}
+
+.roadEdge {
+  fill: #fff;
+}
+
+.roadAsphalt {
+  fill: var(--asphalt);
+}
+
+.roadGuide,
+.roadLine {
+  fill: var(--road-yellow);
+}
+
+.roadGuide {
+  opacity: 0.22;
+}
+
+.car {
+  filter: drop-shadow(0 4px 5px rgba(12, 24, 48, 0.4));
+  transition: opacity 0.2s ease;
+}
+
+.carBody {
+  fill: #e5484d;
+}
+
+.carGlass {
+  fill: #1b2540;
+  opacity: 0.85;
+}
+
+.carRoof {
+  fill: #b8363a;
+}
+
+.carLight {
+  fill: #fff7d6;
+}
+
+.item {
+  --item-pad: 2.5rem;
+
+  position: relative;
+  z-index: 1;
+  padding-left: var(--rail);
+  padding-top: var(--item-pad);
+
+  &:first-of-type {
+    --item-pad: 1rem;
+  }
+
+  @include tablet {
+    display: flex;
+    align-items: center;
+    min-height: 30rem;
+    padding: 0;
+  }
+
+  @include desktop {
+    min-height: clamp(25rem, 33vw, 28rem);
+  }
+}
+
+.anchor {
+  position: absolute;
+  top: calc(var(--item-pad) + var(--stone-w) * 0.6);
+  left: 1.75rem;
+  width: 0;
+  height: 0;
+
+  @include mobile-lg {
+    left: 2.25rem;
+  }
+
+  @include tablet {
+    top: 50%;
+  }
+}
+
+.sideA .anchor {
+  @include tablet {
+    left: 76%;
+  }
+}
+
+.sideB .anchor {
+  @include tablet {
+    left: 24%;
+  }
+}
+
+.marker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+
+  @include tablet {
+    position: absolute;
+    top: 50%;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin: 0;
+    transform: translateY(-50%);
+  }
+}
+
+.sideA .marker {
+  @include tablet {
+    left: calc(76% + var(--road-half, 2rem) + 1rem);
+    align-items: flex-start;
+  }
+}
+
+.sideB .marker {
+  @include tablet {
+    right: calc(76% + var(--road-half, 2rem) + 1rem);
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+.stone {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--stone-w);
+  height: calc(var(--stone-w) * 1.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 0.3rem;
+  overflow: hidden;
+  border: 1px solid var(--bc-line);
+  border-radius: 50% 50% 0.3rem 0.3rem / 42% 42% 0.3rem 0.3rem;
+  background: #fff;
+  box-shadow: 0 6px 14px -8px rgba(12, 24, 48, 0.45);
+  transform: scale(0.92);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.stoneCap {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 42%;
+  background: #c6cedb;
+  transition: background-color 0.35s ease;
+}
+
+.stoneLabel {
+  position: relative;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #0c1830;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.5rem, 6vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1;
+  color: color-mix(in srgb, var(--bc-ink) 35%, transparent);
+  transition: color 0.35s ease;
+
+  @include tablet {
+    font-size: clamp(2rem, 3.6vw, 3rem);
+  }
+}
+
+.content {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+  @include tablet {
+    width: 46%;
+  }
+}
+
+.sideA .content {
+  @include tablet {
+    margin-right: auto;
+    transform: translateX(-80px);
+  }
+}
+
+.sideB .content {
+  @include tablet {
+    margin-left: auto;
+    transform: translateX(80px);
+  }
+}
+
+.reached {
+  .stone {
+    transform: scale(1.05);
+    box-shadow:
+      0 0 0 4px rgba(var(--bc-secondary-rgb), 0.25),
+      0 8px 18px -8px rgba(12, 24, 48, 0.5);
+  }
+
+  .stoneCap {
+    background: var(--bc-secondary);
+  }
+
+  .title {
+    color: color-mix(in srgb, var(--bc-primary) 80%, var(--bc-ink));
+  }
+
+  .content {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content,
+  .sideA .content,
+  .sideB .content {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stone,
+  .stoneCap,
+  .title,
+  .content,
+  .car {
+    transition: none;
+  }
+}

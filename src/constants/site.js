@@ -983,6 +983,31 @@ export const values = [
   },
 ];
 
+export const founder = {
+  name: 'Om Prakash Baid',
+  role: 'Founder, Baid & Company',
+  greeting: 'Baid & Company',
+  speech: [
+    'Since our establishment in 1987, our mission has been to provide professional, ethical, and practical financial guidance to businesses and individuals. Over the years, we have witnessed significant changes in taxation, accounting standards, and business regulations, and we have continuously evolved to help our clients adapt successfully.',
+    'We believe that every client deserves personalized attention and solutions tailored to their unique needs. Our commitment is not only to ensure compliance but also to contribute meaningfully to our clients’ growth and financial success.',
+    'We sincerely thank our clients for their trust and confidence over the years and look forward to continuing this journey together.',
+  ],
+};
+
+const teamPhoto = (id) =>
+  `https://images.unsplash.com/photo-${id}?q=80&w=700&h=700&auto=format&fit=crop&crop=faces`;
+
+export const team = [
+  { name: 'Rohit Baid', designation: 'Managing Partner', image: teamPhoto('1560250097-0b93528c311a') },
+  { name: 'Neha Agarwal', designation: 'Partner, Audit & Assurance', image: teamPhoto('1573496359142-b8d87734a5a2') },
+  { name: 'Vikram Jain', designation: 'Partner, Direct Tax', image: teamPhoto('1507003211169-0a1dd7228f2d') },
+  { name: 'Priya Sharma', designation: 'Senior Manager, GST', image: teamPhoto('1494790108377-be9c29b29330') },
+  { name: 'Arjun Mehta', designation: 'Manager, Corporate Advisory', image: teamPhoto('1500648767791-00dcc994a43e') },
+  { name: 'Sneha Kothari', designation: 'Audit Associate', image: teamPhoto('1438761681033-6461ffad8d80') },
+  { name: 'Karan Bothra', designation: 'Tax Consultant', image: teamPhoto('1472099645785-5658abf4ff4e') },
+  { name: 'Ananya Das', designation: 'Accounts Executive', image: teamPhoto('1544005313-94ddf0286df2') },
+];
+
 export const vision = [
   'Delivering quality audit, assurance and regulatory compliance services.',
   'Providing direct tax, indirect tax and advisory support across sectors.',
@@ -997,11 +1022,95 @@ export const mission = [
   'Continuously update knowledge and adopt evolving regulatory and technological developments.',
 ];
 
-export const milestones = [
-  { year: '1989', label: 'Firm founded in Kolkata' },
-  { year: '2008', label: 'Expanded into advisory & CFO support' },
-  { year: '2016', label: 'Digital practice & cloud accounting' },
-  { year: '2024', label: 'Serving 400+ clients across India' },
+export const journey = [
+  {
+    year: '1987',
+    tagline: 'The Beginning',
+    description:
+      'Baid & Company was founded in 1987 by Shri Om Prakash Baid, with a modest office space of just 90 sq. ft. and a team of 2 staff members.',
+    stats: [
+      { value: '90 sq. ft.', label: 'Office space' },
+      { value: '2', label: 'Staff members' },
+    ],
+  },
+  {
+    year: '1993',
+    tagline: 'Growing with Our Clients',
+    description:
+      'In 1993, the firm took its first major step forward by moving into a larger office of approximately 750 sq. ft., with the team expanding to around 10 staff members.',
+    stats: [
+      { value: '750 sq. ft.', label: 'Office space' },
+      { value: '10', label: 'Staff members' },
+    ],
+  },
+  {
+    year: '2001',
+    tagline: 'A Major Milestone',
+    description:
+      'The year 2001 marked another significant milestone in our journey. We moved into our first corporate office spanning approximately 1,800 sq. ft., with a professional strength of over 20 staff members and 5 partners.',
+    stats: [
+      { value: '1,800 sq. ft.', label: 'Corporate office' },
+      { value: '20+', label: 'Staff members' },
+      { value: '5', label: 'Partners' },
+    ],
+  },
+  {
+    year: '2026',
+    tagline: 'Continuing the Legacy',
+    description:
+      'As the firm continued to expand, we established our additional Head Office at our present location, covering approximately 2,500 sq. ft. and accommodating a professional team of around 30 staff members.',
+    stats: [
+      { value: '2,500 sq. ft.', label: 'Head office' },
+      { value: '30', label: 'Staff members' },
+    ],
+  },
+];
+
+export const testimonials = [
+  {
+    quote:
+      'Baid & Co took over our GST compliance across four states and cleared a backlog of mismatches within two months. Our input credit is finally predictable.',
+    name: 'Rahul Agarwal',
+    designation: 'Managing Director, Agarwal Steel Traders',
+    src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=900&auto=format&fit=crop',
+  },
+  {
+    quote:
+      'Their audit team flagged control gaps early and explained every finding in plain language. Our board now walks into year-end with no surprises.',
+    name: 'Priya Mehta',
+    designation: 'CFO, Northstar Logistics Pvt. Ltd.',
+    src: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=900&auto=format&fit=crop',
+  },
+  {
+    quote:
+      'When we received a scrutiny notice, they built a complete reply pack in days. The matter closed without a single addition to income.',
+    name: 'Sanjay Jain',
+    designation: 'Partner, Jain & Sons',
+    src: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=900&auto=format&fit=crop',
+  },
+  {
+    quote:
+      'From incorporation to our first fundraise, Baid & Co kept our books and ROC filings investor-ready. Diligence took weeks instead of months.',
+    name: 'Ananya Roy',
+    designation: 'Co-founder, Kraftly Foods',
+    src: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=900&auto=format&fit=crop',
+  },
+];
+
+const galleryPhoto = (id) =>
+  `https://images.unsplash.com/photo-${id}?q=80&w=900&auto=format&fit=crop`;
+
+export const gallery = [
+  { src: galleryPhoto('1497366216548-37526070297c'), alt: 'Our Kolkata office workspace' },
+  { src: galleryPhoto('1552664730-d307ca884978'), alt: 'Team planning session' },
+  { src: galleryPhoto('1454165804606-c3d57bc86b40'), alt: 'Reviewing financial statements' },
+  { src: galleryPhoto('1522071820081-009f0129c71c'), alt: 'Colleagues collaborating on a client file' },
+  { src: galleryPhoto('1554224155-6726b3ff858f'), alt: 'Tax computation at the desk' },
+  { src: galleryPhoto('1600880292203-757bb62b4baf'), alt: 'Client consultation meeting' },
+  { src: galleryPhoto('1497366811353-6870744d04b2'), alt: 'Meeting room at the head office' },
+  { src: galleryPhoto('1556761175-5973dc0f32e7'), alt: 'Partners discussing an engagement' },
+  { src: galleryPhoto('1521737604893-d14cc237f11d'), alt: 'The team at work' },
+  { src: galleryPhoto('1542744173-8e7e53415bb0'), alt: 'Presenting audit findings' },
 ];
 
 export const blogPosts = [

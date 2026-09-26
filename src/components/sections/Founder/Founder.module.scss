@@ -1,0 +1,149 @@
+@use '@/styles/mixins.scss' as *;
+
+.section {
+  @include section;
+  overflow-x: clip;
+  background: var(--bc-surface);
+}
+
+.grid {
+  display: grid;
+  gap: 2.25rem;
+  align-items: center;
+  margin-top: 0.5rem;
+
+  @include tablet {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 3rem;
+  }
+
+  @include desktop {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(3rem, 5vw, 5rem);
+  }
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  max-width: 26rem;
+  margin: 0 auto;
+  padding: 0 0.75rem 0.75rem 0;
+
+  @include tablet {
+    max-width: none;
+    padding: 0 1rem 1rem 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0.75rem 0 0 0.75rem;
+    border: 2px solid color-mix(in srgb, var(--bc-secondary) 55%, transparent);
+    border-radius: 1rem;
+
+    @include tablet {
+      inset: 1rem 0 0 1rem;
+    }
+  }
+}
+
+.photo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3.5;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--bc-primary) 10%, var(--bc-surface));
+  box-shadow: 0 24px 50px -34px rgba(12, 24, 48, 0.55);
+
+  @include tablet {
+    aspect-ratio: 1 / 1;
+  }
+
+  @include desktop {
+    aspect-ratio: 5 / 4.5;
+  }
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+  .frame:hover & {
+    transform: scale(1.04);
+  }
+}
+
+.placeholder {
+  width: clamp(3rem, 9vw, 4.5rem);
+  height: auto;
+  color: var(--bc-primary);
+}
+
+.copy {
+  position: relative;
+  display: grid;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.quote {
+  position: absolute;
+  top: -1.25rem;
+  right: 0;
+  width: clamp(3.5rem, 10vw, 5.5rem);
+  height: auto;
+  color: color-mix(in srgb, var(--bc-secondary) 22%, transparent);
+  pointer-events: none;
+}
+
+.greeting,
+.paragraph {
+  position: relative;
+  margin: 0;
+  font-size: 0.975rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--bc-ink) 75%, transparent);
+
+  @include mobile-lg {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+}
+
+.greeting strong {
+  font-weight: 700;
+  color: var(--bc-ink);
+}
+
+.rule {
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  margin-top: 0.75rem;
+  border-radius: 999px;
+  background: var(--bc-secondary);
+  transform-origin: left center;
+}
+
+.signature {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.name {
+  margin: 0;
+  font-family: var(--font-display), 'Source Serif 4', Georgia, serif;
+  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+  font-weight: 700;
+  color: var(--bc-ink);
+}
+
+.role {
+  margin: 0;
+  font-size: 0.95rem;
+  color: color-mix(in srgb, var(--bc-ink) 65%, transparent);
+}

@@ -1,0 +1,93 @@
+@use '@/styles/mixins.scss' as *;
+
+.section {
+  @include section;
+  overflow-x: clip;
+}
+
+.card {
+  display: grid;
+  gap: 0.85rem;
+  max-width: 40rem;
+  padding: 1.15rem;
+  border: 1px solid var(--bc-line);
+  border-radius: 1rem;
+  background: var(--bc-surface);
+  box-shadow: 0 18px 40px -32px rgba(12, 24, 48, 0.45);
+
+  @include mobile-lg {
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  @include desktop {
+    padding: 1.75rem 2rem;
+  }
+}
+
+.tagline {
+  margin: 0;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bc-secondary);
+}
+
+.description {
+  margin: 0;
+  font-size: 0.975rem;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--bc-ink) 75%, transparent);
+
+  @include mobile-lg {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0.25rem 0 0;
+
+  @include mobile-lg {
+    gap: 0.75rem;
+  }
+}
+
+.stat {
+  display: grid;
+  flex: 1 1 6.5rem;
+  gap: 0.2rem;
+  min-width: 0;
+  padding: 0.65rem 0.85rem;
+
+  @include tablet {
+    flex: 0 1 auto;
+    min-width: 7rem;
+    padding: 0.75rem 1rem;
+  }
+
+  @include desktop {
+    min-width: 8rem;
+  }
+  border-radius: 0.75rem;
+  background: var(--bc-mist);
+
+  dt {
+    font-size: 0.8rem;
+    color: color-mix(in srgb, var(--bc-ink) 60%, transparent);
+  }
+
+  dd {
+    margin: 0;
+    font-family: var(--font-display), 'Source Serif 4', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--bc-primary);
+  }
+}
